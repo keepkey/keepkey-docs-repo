@@ -1,0 +1,93 @@
+import Image from 'next/image'
+
+# Build on KeepKey Today with Our New SDK
+
+[Explore the KeepKey SDK on NPM](https://www.npmjs.com/package/@keepkey/keepkey-sdk)
+
+## TL;DR
+
+We're revolutionizing the KeepKey ecosystem by unveiling a new developer SDK, alleviating major points of friction.
+
+### Terms:
+
+- **WebUSB**: The web protocol for your host machine to communicate with your KeepKey Device.
+- **HID**: The native USB protocol for communication between your host machine and your KeepKey Device.
+- **Browser**: Web browsers like Chrome or Brave.
+- **Electron**: A native application framework running on your host machine outside of a web browser.
+
+## Now, What's Possible?
+
+For the first time with a KeepKey, you can:
+
+- Have Firefox open and pair a KeepKey with app.shapeshift.com.
+- Pair the same KeepKey with a Chrome tab.
+- Use KeepKey Desktop’s built-in browser with ShapeShift open.
+
+All applications are connected and functional simultaneously, offering seamless interaction.
+
+### The Challenge Before
+
+WebUSB was the main interface for KeepKey prior to our acquisition, which imposed a significant limitation: it only allowed a single application to access the device at a time due to the `claimInterface` feature.
+
+### The Solution: The New KeepKey Desktop
+
+KeepKey desktop now serves as the primary interface for building on KeepKey. It supplies native HID USB drivers, manages advanced features like PIN management in BIP39 mnemonics, and importantly, introduces a new KeepKey REST interface hosted on the user's localhost.
+
+### Introducing the KeepKey REST Interface
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Image
+    src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*agzHRHDpv01lOKAIBHq6jQ.png"
+    alt="KeepKey REST Interface"
+    width={700}
+    height={400}
+    layout="intrinsic"
+  />
+</div>
+
+Developer documentation is accessible at `http://localhost:1645/docs` or through the KeepKey app's settings.
+
+## KeepKey-SDK: The New Developer Kit
+
+Developers now have complete access to the KeepKey's REST API and TypeScript typing for coding assistance through the KeepKey-SDK.
+
+### Case Study: ShapeShift.com Integration
+
+The HDwallet package is at the heart of app.shapeshift.com, integrating the REST interface.
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Image
+    src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*uY-c3vQBlC-xgXe7YR6dNQ.png"
+    alt="ShapeShift Integration"
+    width={700}
+    height={400}
+    layout="intrinsic"
+  />
+</div>
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Image
+    src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*qYdT-Fpq36o17BMsYCFeQg.png"
+    alt="Multiple Application Connectivity"
+    width={700}
+    height={400}
+    layout="intrinsic"
+  />
+</div>
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Image
+    src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*h0Kuh7e54KTOkLfKvw20mw.png"
+    alt="KeepKey Usage Demonstration"
+    width={700}
+    height={400}
+    layout="intrinsic"
+  />
+</div>
+
+You can see a live demonstration of this feature:
+
+- [ShapeShift DAO | Your Web3 & DeFi Portal](https://web-theta-one.vercel.app)
+- [GitHub Pull Request #3678](https://github.com/shapeshift/web/pull/3678)
+
+This new KeepKey REST API paves the way for future innovative applications to integrate and offer users a self-custody solution.

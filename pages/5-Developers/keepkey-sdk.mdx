@@ -1,0 +1,120 @@
+## KeepKey SDK Usage
+
+### TL;DR
+
+Here’s a quick overview of using the KeepKey SDK for interacting with your KeepKey hardware wallet.
+
+#### Install the KeepKey SDK
+
+https://www.npmjs.com/package/@keepkey/keepkey-sdk
+
+```bash
+npm install @keepkey/keepkey-sdk
+```
+
+### Setting up the KeepKey SDK
+
+```
+export const setupKeepKeySDK = async () => {
+    let serviceKey = window.localStorage.getItem('@app/serviceKey')
+    let config: any = {
+        apiKey: serviceKey,
+        pairingInfo: {
+            name: 'ShapeShift',
+            imageUrl: 'https://assets.coincap.io/assets/icons/fox@2x.png',
+            basePath: 'http://localhost:1646/spec/swagger.json',
+            url: 'https://private.shapeshift.com',
+        },
+    }
+    let sdk = await KeepKeySdk.create(config)
+
+    if (!serviceKey) {
+        window.localStorage.setItem('@app/serviceKey', config.apiKey)
+    }
+    return sdk
+}
+```
+
+### Getting a Bitcoin Address
+
+```typescript
+let path = {
+  symbol: 'BTC',
+  address_n: [0x80000000 + 44, 0x80000000 + 1, 0x80000000 + 0],
+  coin: 'Bitcoin',
+  script_type: 'p2pkh',
+  showDisplay: false
+}
+
+let addressBtc = await sdk.system.info.getPublicKey(path)
+```
+
+### Signing a Bitcoin Transaction
+
+```typescript
+let hdwalletTxDescription = {
+  coin: 'Bitcoin',
+  inputs: inputsSelected,
+  outputs: outputsFinal,
+  version: 1,
+  locktime: 0,
+}
+
+let signedTxTransfer = await sdk.utxo.utxoSignTransaction(hdwalletTxDescription)
+```
+
+### Understanding the KeepKey SDK
+
+- **REST**: [REpresentational State Transfer](https://restfulapi.net/) is an architectural style used for designing distributed systems.
+- **Swagger**: [Swagger](https://swagger.io/) is an open source software framework used to describe and document RESTful APIs.
+
+### Quick Start with KeepKey
+
+Run the following to create your project:
+
+```bash
+npx degit keepkey/keepkey-template your-app-name
+```
+
+### Auth and API Documentation
+
+- **Auth**:
+- The config object is passed into the KeepKey SDK. The `apiKey` issued by KeepKey Desktop is returned to the SDK and added to the config.
+
+- **API Docs**: View the [Swagger docs](http://localhost:1646/docs) directly.
+
+![Alt Text](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*OMz9Cccx6Hp_ZXH7t-tEYw.png "")
+
+### Signing a Transaction Example
+
+```typescript
+let inputs = [
+  {
+    addressNList: [2147483692, 2147483653, 2147483648, 0, 0],
+    scriptType: "p2pkh",
+    amount: String(390000),
+    vout: 0,
+    txid: "d5f65ee80147b4bcc70b75e4bbf2d7382021b871bd8867ef8fa525ef50864882",
+    tx: input,
+  },
+];
+
+let outputs = [
+  {
+    address: "1MJ2tj2ThBE62zXbBYA5ZaN3fdve5CPAz1",
+    addressType: "spend",
+    amount: String(390000 - 10000),
+    isChange: false,
+  },
+];
+
+let txDescription = {
+  coin: "Bitcoin",
+  inputs,
+  outputs,
+  version: 1,
+  locktime: 0,
+};
+
+let responseSign = await sdk.utxo.utxoSignTransaction(txDescription);
+```
