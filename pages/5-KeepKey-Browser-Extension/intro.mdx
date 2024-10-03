@@ -1,0 +1,28 @@
+# KeepKey Browser Extension
+
+link: https://chromewebstore.google.com/detail/dajbdedapcflmaaojleehmafomgjcdoh
+
+## BitcoinTransaction Component
+
+The `BitcoinTransaction` component allows users to request their Bitcoin account, fetch the balance, and input an amount from the KeepKey browser extension. Below is an example of how to use this component.
+
+### High level API
+
+```declare global {
+  interface Window {
+    keepkey?: {
+      binance: Eip1193Provider;
+      bitcoin: Eip1193Provider;
+      bitcoincash: Eip1193Provider;
+      dogecoin: Eip1193Provider;
+      ethereum: Eip1193Provider;
+      cosmos: Eip1193Provider;
+      litecoin: Eip1193Provider;
+      thorchain: Eip1193Provider;
+      mayachain: Eip1193Provider;
+    };
+  }
+}
+```
+
+

@@ -18,10 +18,16 @@
   },
   "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
+    "@pioneer-platform/pioneer-caip": "^9.2.32",
+    "@radix-ui/react-primitive": "^2.0.0",
+    "@radix-ui/react-progress": "^1.1.0",
+    "@shadcn/ui": "^0.0.4",
     "next": "^13.0.6",
     "nextra": "latest",
     "nextra-theme-docs": "latest",
+    "radix-ui": "^1.0.1",
     "react": "^18.2.0",
+    "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
