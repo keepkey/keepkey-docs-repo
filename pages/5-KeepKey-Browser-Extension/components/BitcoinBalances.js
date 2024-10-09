@@ -37,15 +37,33 @@ const BitcoinBalance = () => {
     };
 
     return (
-        <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'Arial, sans-serif' }}>
-            <h1 style={{ color: '#1D4ED8' }}>Bitcoin Balance Checker</h1>
-            <p style={{ marginBottom: '1rem', color: '#6B7280' }}>Get your Bitcoin account balance instantly using KeepKey</p>
+        <div style={{
+            padding: '1rem',
+            textAlign: 'center',
+            backgroundColor: 'black',
+            minHeight: '100vh',
+            color: 'white',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center', // Centers content vertically
+            alignItems: 'center' // Centers content horizontally
+        }}>
+            <h1 style={{ color: '#1D4ED8', marginBottom: '0.5rem' }}>Bitcoin Balance Checker</h1>
+            <p style={{ marginBottom: '1rem', maxWidth: '400px' }}>Get your Bitcoin account balance instantly using KeepKey</p>
             <CustomButton onClick={requestBitcoinBalance}>
-                Request Bitcoin Account
+                Request Bitcoin Balance
             </CustomButton>
 
             {account && (
-                <CustomCard>
+                <CustomCard style={{
+                    backgroundColor: '#1E293B',
+                    color: 'white',
+                    padding: '1rem',
+                    marginTop: '1rem',
+                    width: '100%',
+                    maxWidth: '400px',
+                    borderRadius: '0.5rem'
+                }}>
                     <img
                         src="https://pioneers.dev/coins/bitcoin.png"
                         alt="Bitcoin Logo"
@@ -53,34 +71,41 @@ const BitcoinBalance = () => {
                     />
                     {balance !== null && (
                         <>
-                            <p style={{ fontWeight: 'bold', color: '#374151' }}>Balance:</p>
-                            <p style={{ color: '#1F2937' }}>{formatBalance(balance)} BTC</p>
-                            <p style={{ fontWeight: 'bold', color: '#374151' }}>USD Value:</p>
-                            <p style={{ color: '#1F2937' }}>${calculateUSDValue(balance)}</p>
+                            <p style={{ fontWeight: 'bold', color: '#FBBF24', marginBottom: '0.5rem' }}>Balance:</p>
+                            <p style={{ marginBottom: '0.5rem' }}>{formatBalance(balance)} BTC</p>
+                            <p style={{ fontWeight: 'bold', color: '#FBBF24', marginBottom: '0.5rem' }}>USD Value:</p>
+                            <p>${calculateUSDValue(balance)}</p>
                         </>
                     )}
                 </CustomCard>
             )}
 
             {data && (
-                <CustomCard>
-                    <h3 style={{ fontSize: '1.25rem', color: '#111827', marginBottom: '0.5rem' }}>Full Account Data (JSON):</h3>
+                <CustomCard style={{
+                    backgroundColor: '#1E293B',
+                    color: 'white',
+                    padding: '1rem',
+                    marginTop: '1rem',
+                    width: '100%',
+                    maxWidth: '400px',
+                    borderRadius: '0.5rem'
+                }}>
+                    <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Full Account Data (JSON):</h3>
                     <pre style={{
-                        backgroundColor: '#F9FAFB',
-                        padding: '1rem',
-                        borderRadius: '0.375rem',
+                        padding: '0.5rem',
+                        backgroundColor: '#0F172A',
                         textAlign: 'left',
                         overflowX: 'auto',
-                        color: '#374151',
-                        maxHeight: '200px',
-                        whiteSpace: 'pre-wrap'
+                        color: 'white',
+                        whiteSpace: 'pre-wrap',
+                        borderRadius: '0.375rem'
                     }}>
                         {JSON.stringify(data, null, 2)}
                     </pre>
                 </CustomCard>
             )}
 
-            {error && <p style={{ color: '#DC2626' }}>{error}</p>}
+            {error && <p style={{ color: '#DC2626', marginTop: '1rem' }}>{error}</p>}
         </div>
     );
 };

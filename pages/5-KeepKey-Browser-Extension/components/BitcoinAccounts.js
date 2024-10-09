@@ -32,7 +32,7 @@ const BitcoinAccounts = () => {
             {account && (
                 <div className="account-box">
                     <p>Account Address:</p>
-                    <p>{account}</p>
+                    <p dangerouslySetInnerHTML={{ __html: account.join('<br />') }}></p>
                 </div>
             )}
 

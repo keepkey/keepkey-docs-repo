@@ -9,19 +9,64 @@ import DogecoinSendTransaction from './components/DogecoinSendTransaction';
 import DashSendTransaction from './components/DashSendTransaction';
 import LitecoinSendTransaction from './components/LitecoinSendTransaction';
 import BitcoinCashSendTransaction from './components/BitcoinCashSendTransaction';
-import EthereumSendTransaction from './components/EthereumSendTransaction';
-import CosmosSendTransaction from './components/CosmosSendTransaction';
-import RippleSendTransaction from './components/RippleSendTransaction';
-import ThorchainSendTransaction from './components/ThorchainSendTransaction';
-import MayachainSendTransaction from './components/MayachainSendTransaction';
 
 # Working with KeepKey Transactions
 
 ### Bitcoin (BTC)
 Manage your Bitcoin accounts and send transactions securely with KeepKey.
 
+```
+            const accounts = await window.keepkey.bitcoin.request({
+                method: 'request_accounts',
+            });
+            setAccount(accounts[0]);
+```
+
+example:
+
 <BitcoinAccounts />
+
+```
+            const balance = await window.keepkey.bitcoin.request({
+                method: "request_balance",
+            });
+```
+
 <BitcoinBalance />
+
+returned data:
+
+#Send Bitcoin
+
+```
+        const txParams = {
+            amount: {
+                amount: amount,
+                decimals: 8,
+            },
+            asset: {
+                chain: 'bitcoin',
+                symbol: 'BTC',
+                ticker: 'BTC',
+            },
+            memo: '',
+            recipient: address,
+        };
+
+        try {
+            const signedTx = await window.keepkey.bitcoin.request({
+                method: 'transfer',
+                params: [txParams],
+            });
+            setTxId(signedTx.txId); // Assume txId is part of the response
+            setLoading(false);
+        } catch (err) {
+            setError('Transaction failed: ' + err.message);
+            setLoading(false);
+        }
+```
+
+Example:
 <BitcoinSendTransaction />
 
 ### Dogecoin (DOGE)
@@ -44,10 +89,3 @@ Manage Bitcoin Cash and send BCH transactions using KeepKey.
 Manage Litecoin and send LTC transactions using KeepKey.
 
 <LitecoinSendTransaction />
-
-
-
-### Ripple (XRP)
-Manage Ripple transactions with KeepKey.
-
-<RippleSendTransaction />
