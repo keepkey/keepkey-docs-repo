@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
+    "@mantine/prism": "^6.0.22",
     "@pioneer-platform/pioneer-caip": "^9.2.32",
     "@radix-ui/react-primitive": "^2.0.0",
     "@radix-ui/react-progress": "^1.1.0",

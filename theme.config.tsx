@@ -3,13 +3,14 @@ import { DocsThemeConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
   logo: <span>KeepKey Docs</span>,
+  logoLink:'https://keepkey.info',
   project: {
-    link: 'https://github.com/coinmastersguild/keepkey-docs',
+    link: 'https://github.com/keepkey/keepkey-docs-repo',
   },
   chat: {
     link: 'https://discord.com/invite/FDQEbB79N2',
   },
-  docsRepositoryBase: 'https://github.com/coinmastersguild/keepkey-docs',
+  docsRepositoryBase: 'https://github.com/keepkey/keepkey-docs-repo',
   footer: {
     text: 'KeepKey Docs',
   },
