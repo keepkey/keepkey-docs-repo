@@ -5,7 +5,7 @@ const withNextra = require('nextra')({
 
 module.exports = withNextra({
   images: {
-    domains: ['miro.medium.com','www.keepkey.com'],
+    domains: ['keepkey.info','www.keepkey.info','www.keepkey.com'],
   },
   // You might have other configurations here
 });
