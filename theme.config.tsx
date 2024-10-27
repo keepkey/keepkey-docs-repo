@@ -3,7 +3,7 @@ import { DocsThemeConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
   logo: <span>KeepKey Docs</span>,
-  logoLink:'https://keepkey.info',
+  logoLink:'https://keepkey.com',
   project: {
     link: 'https://github.com/keepkey/keepkey-docs-repo',
   },
